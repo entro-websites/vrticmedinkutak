@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Medin Kutak - Montesori vrtić i jasle, Voždovac</title>
+<meta name="description" content="Medin Kutak - privatni Montesori vrtić i jasle u Voždovcu. Jaslena, mešovita i predškolska grupa. Zakaži posetu i upiši dete.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Dosis:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --accent: #6f4792;
+    --accent-dark: #4e3267;
+    --accent-light: #9b74bd;
+    --accent-soft: #f4eef9;
+    --accent-glow: rgba(111,71,146,0.16);
+    --text: #241b2e;
+    --text-muted: rgba(36,27,46,0.68);
+    --text-faint: rgba(36,27,46,0.46);
+    --bg: #fffdfb;
+    --radius-card: 26px;
+    --radius-btn: 999px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Dosis', sans-serif;
+    font-weight:400;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Amatic SC', cursive;
+    font-weight:700;
+    color:var(--text);
+    line-height:1.05;
+  }
+
+  img{max-width:100%;display:block;}
+
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{
+    max-width:1280px;
+    margin:0 auto;
+    padding-left:24px;
+    padding-right:24px;
+  }
+
+  @media (max-width:768px){
+    .wrap{padding-left:20px;padding-right:20px;}
+  }
+
+  section{
+    padding-top:96px;
+    padding-bottom:96px;
+  }
+
+  @media (max-width:768px){
+    section{padding-top:64px;padding-bottom:64px;}
+  }
+
+  .eyebrow{
+    display:inline-block;
+    font-family:'Dosis',sans-serif;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-size:0.8rem;
+    color:var(--accent);
+    background:var(--accent-soft);
+    padding:6px 16px;
+    border-radius:var(--radius-btn);
+    margin-bottom:18px;
+  }
+
+  .section-title{
+    font-size:clamp(2.2rem, 4vw, 3.2rem);
+    margin-bottom:16px;
+  }
+
+  .section-sub{
+    color:var(--text-muted);
+    font-size:1.05rem;
+    max-width:65ch;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Dosis',sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    padding:15px 32px;
+    border-radius:var(--radius-btn);
+    border:2px solid transparent;
+    cursor:pointer;
+    transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .btn-primary{
+    background:var(--accent);
+    color:#fff;
+    box-shadow:0 10px 30px -10px var(--accent-glow);
+  }
+  .btn-primary:hover{
+    background:var(--accent-dark);
+    transform:translateY(-2px);
+    box-shadow:0 16px 36px -10px var(--accent-glow);
+  }
+
+  .btn-outline{
+    background:transparent;
+    color:var(--accent);
+    border-color:var(--accent-light);
+  }
+  .btn-outline:hover{
+    background:var(--accent-soft);
+    transform:translateY(-2px);
+  }
+
+  /* HEADER */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,253,251,0.85);
+    border-bottom:1px solid rgba(111,71,146,0.1);
+    transition:backdrop-filter 0.2s ease, box-shadow 0.2s ease;
+  }
+  header.scrolled{
+    backdrop-filter:blur(12px);
+    box-shadow:0 4px 24px -8px rgba(36,27,46,0.08);
+  }
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:14px;
+    padding-bottom:14px;
+  }
+
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo img{
+    height:52px;
+    width:auto;
+  }
+
+  nav.main-nav{
+    display:flex;
+    align-items:center;
+    gap:36px;
+  }
+
+  nav.main-nav a{
+    font-weight:600;
+    font-size:0.98rem;
+    color:var(--text);
+    transition:color 0.2s ease;
+  }
+  nav.main-nav a:hover{color:var(--accent);}
+
+  .nav-actions{display:flex;align-items:center;gap:20px;}
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:8px;
+    z-index:200;
+  }
+  .hamburger span{
+    width:26px;
+    height:3px;
+    background:var(--accent);
+    border-radius:3px;
+    transition:all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .hamburger.open span:nth-child(2){opacity:0;}
+  .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+  .mobile-menu{
+    display:none;
+    position:fixed;
+    inset:0 0 0 0;
+    top:0;
+    background:var(--bg);
+    z-index:150;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+    transform:translateY(-100%);
+    transition:transform 0.35s ease;
+  }
+  .mobile-menu.open{
+    transform:translateY(0);
+  }
+  .mobile-menu a{
+    font-family:'Amatic SC',cursive;
+    font-size:2.2rem;
+    font-weight:700;
+    color:var(--text);
+  }
+
+  @media (max-width:991px){
+    nav.main-nav{display:none;}
+    .nav-actions .btn{display:none;}
+    .hamburger{display:flex;}
+    .mobile-menu{display:flex;}
+  }
+
+  /* HERO */
+  .hero{
+    padding-top:72px;
+    padding-bottom:80px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(3rem, 6vw, 5.2rem);
+    margin-bottom:22px;
+  }
+  .hero p.lead{
+    font-size:1.2rem;
+    color:var(--text-muted);
+    max-width:52ch;
+    margin-bottom:34px;
+  }
+  .hero-img-wrap{
+    position:relative;
+    border-radius:var(--radius-card);
+    overflow:hidden;
+    aspect-ratio:4/3.2;
+  }
+  .hero-img-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .hero-badge{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    background:rgba(255,253,251,0.92);
+    backdrop-filter:blur(6px);
+    padding:14px 20px;
+    border-radius:18px;
+    font-weight:700;
+    font-size:0.95rem;
+    color:var(--accent-dark);
+    box-shadow:0 10px 28px -12px rgba(36,27,46,0.25);
+  }
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-img-wrap{order:-1;}
+  }
+
+  /* PAIN SECTION */
+  .pain{
+    background:var(--accent-soft);
+  }
+  .pain-inner{
+    max-width:720px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .pain p{
+    font-size:1.2rem;
+    color:var(--text);
+    margin-bottom:14px;
+  }
+  .pain p:last-child{margin-bottom:0;}
+
+  /* PROGRAM / SERVICES */
+  .program-head{
+    max-width:700px;
+    margin-bottom:56px;
+  }
+
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+
+  .card{
+    background:#fff;
+    border:1px solid rgba(111,71,146,0.12);
+    border-radius:var(--radius-card);
+    padding:36px 30px;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 30px 50px -28px rgba(36,27,46,0.22);
+  }
+
+  .icon-circle{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:var(--accent-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:22px;
+  }
+  .icon-circle svg{width:28px;height:28px;stroke:var(--accent);}
+
+  .card h3{
+    font-size:1.7rem;
+    margin-bottom:10px;
+  }
+  .card p{
+    color:var(--text-muted);
+    font-size:0.98rem;
+  }
+
+  @media (max-width:900px){
+    .cards-grid{grid-template-columns:1fr;}
+  }
+
+  /* GROUPS */
+  .groups{
+    background:var(--accent-soft);
+  }
+  .groups-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+    margin-top:50px;
+  }
+  .group-card{
+    background:#fff;
+    border-radius:var(--radius-card);
+    padding:34px 28px;
+    text-align:left;
+    box-shadow:0 20px 40px -30px rgba(36,27,46,0.2);
+  }
+  .group-card .age{
+    display:inline-block;
+    font-weight:700;
+    color:#fff;
+    background:var(--accent);
+    padding:5px 16px;
+    border-radius:var(--radius-btn);
+    font-size:0.85rem;
+    margin-bottom:18px;
+  }
+  .group-card h3{font-size:1.8rem;margin-bottom:10px;}
+  .group-card p{color:var(--text-muted);font-size:0.97rem;}
+
+  @media (max-width:900px){
+    .groups-grid{grid-template-columns:1fr;}
+  }
+
+  /* ABOUT */
+  .about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-img{
+    border-radius:var(--radius-card);
+    overflow:hidden;
+  }
+  .about-img img{width:100%;height:100%;object-fit:cover;}
+  .about-text p{
+    color:var(--text-muted);
+    margin-bottom:18px;
+    max-width:60ch;
+  }
+  .about-stats{
+    display:flex;
+    gap:36px;
+    margin-top:30px;
+  }
+  .about-stats div{text-align:left;}
+  .about-stats .num{
+    font-family:'Amatic SC',cursive;
+    font-size:2.6rem;
+    color:var(--accent);
+    font-weight:700;
+    line-height:1;
+  }
+  .about-stats .label{
+    font-size:0.85rem;
+    color:var(--text-faint);
+  }
+
+  @media (max-width:900px){
+    .about{grid-template-columns:1fr;}
+    .about-img{order:-1;}
+  }
+
+  /* GALLERY */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-auto-rows:220px;
+    gap:18px;
+    margin-top:50px;
+  }
+  .gallery-grid img, .gallery-grid .placeholder{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:20px;
+  }
+  .gallery-grid .placeholder{
+    background:#ece5f2;
+    color:var(--text-faint);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:0.85rem;
+    font-weight:600;
+    padding:10px;
+  }
+  .gallery-grid .tall{grid-row:span 2;}
+
+  @media (max-width:900px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px;}
+    .gallery-grid .tall{grid-row:span 1;}
+  }
+
+  /* TESTIMONIALS */
+  .testimonials{
+    background:var(--accent-soft);
+  }
+  .stats-row{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    flex-wrap:wrap;
+    margin-bottom:64px;
+  }
+  .stat{
+    text-align:center;
+  }
+  .stat .num{
+    font-family:'Amatic SC',cursive;
+    font-size:4rem;
+    color:var(--accent);
+    line-height:1;
+  }
+  .stat .label{
+    font-size:0.95rem;
+    color:var(--text-muted);
+    margin-top:6px;
+  }
+
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+  }
+  .testi-card{
+    background:#fff;
+    border-radius:var(--radius-card);
+    padding:36px 32px;
+    box-shadow:0 20px 44px -30px rgba(36,27,46,0.22);
+  }
+  .testi-card .quote-mark{
+    font-family:'Amatic SC',cursive;
+    font-size:3rem;
+    color:var(--accent-light);
+    line-height:1;
+    margin-bottom:8px;
+  }
+  .testi-card p.quote{
+    font-size:1.05rem;
+    color:var(--text);
+    margin-bottom:20px;
+  }
+  .testi-author{
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .testi-avatar{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    background:var(--accent-soft);
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-family:'Dosis',sans-serif;
+  }
+  .testi-author .name{font-weight:700;}
+  .testi-author .role{font-size:0.85rem;color:var(--text-faint);}
+
+  @media (max-width:900px){
+    .testi-grid{grid-template-columns:1fr;}
+    .stats-row{gap:36px;}
+  }
+
+  /* CONTACT */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:start;
+  }
+  .contact-info h2{margin-bottom:18px;}
+  .contact-info p.sub{
+    color:var(--text-muted);
+    margin-bottom:34px;
+    max-width:48ch;
+  }
+  .contact-item{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    margin-bottom:26px;
+  }
+  .contact-item .icon-circle{
+    flex-shrink:0;
+    margin-bottom:0;
+  }
+  .contact-item h4{
+    font-family:'Dosis',sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    margin-bottom:4px;
+  }
+  .contact-item p{color:var(--text-muted);font-size:0.95rem;}
+
+  .map-wrap{
+    border-radius:var(--radius-card);
+    overflow:hidden;
+    box-shadow:0 20px 50px -30px rgba(36,27,46,0.3);
+  }
+  .map-wrap img{width:100%;height:auto;display:block;}
+
+  /* FINAL CTA */
+  .final-cta{
+    text-align:center;
+    background:var(--accent);
+    border-radius:32px;
+    padding:70px 40px;
+    margin-top:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";
+    position:absolute;
+    top:-40%;
+    right:-10%;
+    width:420px;
+    height:420px;
+    background:radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+    pointer-events:none;
+  }
+  .final-cta h2{
+    color:#fff;
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    margin-bottom:16px;
+  }
+  .final-cta p{
+    color:rgba(255,255,255,0.85);
+    max-width:50ch;
+    margin:0 auto 32px;
+  }
+  .final-cta .btn-primary{
+    background:#fff;
+    color:var(--accent-dark);
+    box-shadow:none;
+  }
+  .final-cta .btn-primary:hover{
+    background:#f3ecf9;
+  }
+
+  /* FOOTER */
+  footer{
+    padding-top:50px;
+    padding-bottom:40px;
+    border-top:1px solid rgba(111,71,146,0.12);
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .footer-inner .logo img{height:40px;}
+  .footer-links{
+    display:flex;
+    gap:24px;
+  }
+  .footer-links a{
+    font-size:0.9rem;
+    color:var(--text-muted);
+  }
+  .footer-links a:hover{color:var(--accent);}
+  .footer-note{
+    font-size:0.82rem;
+    color:var(--text-faint);
+    text-align:center;
+    margin-top:30px;
+  }
+
+  @media (max-width:900px){
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-inner{flex-direction:column;align-items:flex-start;}
+  }
+
+  /* reveal animation */
+  .reveal{
+    opacity:1;
+    transform:translateY(0);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal:not(.in-view){
+    opacity:1;
+    transform:translateY(12px);
+  }
+  .reveal.in-view{
+    opacity:1;
+    transform:translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<header id="site-header">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">
+      <img src="assets/logo.png" alt="Medin Kutak - logo vrtića i jasli">
+    </a>
+    <nav class="main-nav">
+      <a href="#program">Montesori program</a>
+      <a href="#grupe">Grupe</a>
+      <a href="#o-nama">O nama</a>
+      <a href="#galerija">Galerija</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#kontakt" class="btn btn-primary">Zakaži posetu</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Otvori meni">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#program">Montesori program</a>
+  <a href="#grupe">Grupe</a>
+  <a href="#o-nama">O nama</a>
+  <a href="#galerija">Galerija</a>
+  <a href="#kontakt">Kontakt</a>
+  <a href="#kontakt" class="btn btn-primary" style="color:#fff;">Zakaži posetu</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Mesto gde tvoje dete postaje samostalno, znatiželjno i srećno</h1>
+        <p class="lead">Montesori vrtić i jasle u Voždovcu, za decu od 1 do 7 godina. Male grupe, stručan tim i svaki dan pun igre, istraživanja i učenja na detetovom tempu.</p>
+        <a href="#kontakt" class="btn btn-primary">Zakaži besplatnu posetu vrtiću</a>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="assets/babies-1.jpg" alt="Deca se igraju Montesori didaktičkim materijalima u vrtiću Medin Kutak">
+        <div class="hero-badge">25+ godina rada sa decom</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN INTRO -->
+  <section class="pain reveal">
+    <div class="wrap pain-inner">
+      <p>Tražiš vrtić i ne znaš kome da poveriš dete. Zoveš, obilaziš, čitaš utiske drugih roditelja, a opet nisi sigurna da li će se tvoje dete osećati bezbedno i prihvaćeno.</p>
+      <p>Kod nas dete dobija prostor da samo istražuje, pogreši, pokuša ponovo i raste, uz vaspitača koji ga zaista poznaje po imenu.</p>
+    </div>
+  </section>
+
+  <!-- MAIN PROGRAM -->
+  <section id="program">
+    <div class="wrap">
+      <div class="program-head reveal">
+        <span class="eyebrow">Naš program</span>
+        <h2 class="section-title">Montesori pristup, u praksi</h2>
+        <p class="section-sub">Ne učimo decu napamet. Pripremimo okruženje, damo materijal koji odgovara uzrastu i pustimo dete da samo otkrije kako stvari funkcionišu.</p>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card reveal">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          </div>
+          <h3>Montesori materijali</h3>
+          <p>Didaktički pribor biran po uzrastu, dete samo bira šta će da radi i koliko dugo. Mi pratimo, ne prekidamo.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4 4-6 8-6s8 2 8 6"></path></svg>
+          </div>
+          <h3>Stručan tim vaspitača</h3>
+          <p>Vaspitačice sa iskustvom i Montesori obukom, koje znaju ime i navike svakog deteta u grupi.</p>
+        </div>
+        <div class="card reveal">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+          </div>
+          <h3>Saradnja sa roditeljima</h3>
+          <p>Redovno te obaveštavamo kako tvoje dete napreduje, šta voli i u čemu mu treba podrška, bez čekanja roditeljskog.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GROUPS -->
+  <section id="grupe" class="groups">
+    <div class="wrap">
+      <div class="program-head reveal">
+        <span class="eyebrow">Grupe po uzrastu</span>
+        <h2 class="section-title">Tri grupe, isti pristup</h2>
+        <p class="section-sub">Svaka grupa ima svoj ritam i svoje materijale, prilagođene onome što dete u tom periodu najviše razvija.</p>
+      </div>
+      <div class="groups-grid">
+        <div class="group-card reveal">
+          <span class="age">1 - 2,5 godine</span>
+          <h3>Jaslena grupa</h3>
+          <p>Prvi koraci van kuće. Fokus na rutini, bezbednosti i razvoju govora i motorike kroz svakodnevne aktivnosti.</p>
+        </div>
+        <div class="group-card reveal">
+          <span class="age">2,5 - 4 godine</span>
+          <h3>Mešovita grupa</h3>
+          <p>Mlađa i starija deca uče jedni od drugih. Razvoj samostalnosti kroz oblačenje, hranjenje i brigu o sebi.</p>
+        </div>
+        <div class="group-card reveal">
+          <span class="age">4 - 7 godina</span>
+          <h3>Predškolska grupa</h3>
+          <p>Priprema za školu kroz pismo, brojeve i logiku, uvek kroz Montesori materijale, ne kroz bubanje.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="o-nama">
+    <div class="wrap about">
+      <div class="about-img reveal">
+        <img src="assets/004.jpg" alt="Unutrašnjost igraonice vrtića Medin Kutak sa belim nameštajem i prirodnim svetlom">
+      </div>
+      <div class="about-text reveal">
+        <span class="eyebrow">O nama</span>
+        <h2 class="section-title">Privatni vrtić u srcu Voždovca</h2>
+        <p>Medin Kutak je privatna predškolska ustanova, vrtić i jasle, zasnovana na Montesori pedagogiji. Nalazimo se na Bulevaru oslobođenja, dostupni roditeljima iz celog Voždovca.</p>
+        <p>Radimo sa manjim grupama dece, jer tako svaki vaspitač stvarno stigne da upozna svako dete. Nije nam cilj da imamo najviše dece, nego da svako od njih ode kući srećno.</p>
+        <div class="about-stats">
+          <div>
+            <div class="num">25+</div>
+            <div class="label">godina rada sa decom</div>
+          </div>
+          <div>
+            <div class="num">3</div>
+            <div class="label">grupe po uzrastu</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="galerija" class="reveal">
+    <div class="wrap">
+      <div class="program-head">
+        <span class="eyebrow">Galerija</span>
+        <h2 class="section-title">Kako izgleda jedan dan kod nas</h2>
+        <p class="section-sub">Pogledaj prostor u kom tvoje dete provodi dan, pre nego što nam zakažeš posetu.</p>
+      </div>
+      <div class="gallery-grid">
+        <img class="tall" src="assets/004.jpg" alt="Igraonica sa stolovima i policama za Montesori materijale">
+        <img src="assets/babies-1.jpg" alt="Beba se igra edukativnim igračkama na podu">
+        <img src="assets/slajd1AA.jpg" alt="Devojčica sa obojenim rukama uz azbuku na zidu">
+        <div class="placeholder">FOTOGRAFIJA DVORIŠTA</div>
+        <img src="assets/bilbord202b.png" alt="Reklamni bilbord vrtića Medin Kutak sa kontakt podacima">
+        <div class="placeholder">FOTOGRAFIJA PREDŠKOLSKE GRUPE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="wrap">
+      <div class="program-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <span class="eyebrow">Utisci roditelja</span>
+        <h2 class="section-title">Šta kažu roditelji koji su već kod nas</h2>
+      </div>
+
+      <div class="stats-row reveal">
+        <div class="stat">
+          <div class="num">92%</div>
+          <div class="label">popunjenost grupa</div>
+        </div>
+        <div class="stat">
+          <div class="num">96%</div>
+          <div class="label">srećna deca</div>
+        </div>
+        <div class="stat">
+          <div class="num">100%</div>
+          <div class="label">srećni roditelji</div>
+        </div>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="quote-mark">"</div>
+          <p class="quote">Moja ćerka je kod kuće sama počela da sprema svoje igračke, nešto što nikad nismo uspeli da je naučimo. Vaspitačice su strpljive i stvarno prate svako dete posebno.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">GR</div>
+            <div>
+              <div class="name">Gordana R.</div>
+              <div class="role">mama, predškolska grupa</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="quote-mark">"</div>
+          <p class="quote">Sin je krenuo u jaslice preplašen i tih, a sad trči unutra svako jutro. Osećam da vaspitačice stvarno znaju šta rade, ne samo da čuvaju decu.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">T</div>
+            <div>
+              <div class="name">Tanja</div>
+              <div class="role">mama, jaslena grupa</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="kontakt">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Kontakt i lokacija</span>
+        <h2>Zakaži posetu, sve ostalo rešavamo zajedno</h2>
+        <p class="sub">Pozovi nas ili navrati do vrtića. Pokazaćemo ti prostor, grupe i odgovoriti na sva pitanja oko upisa.</p>
+
+        <div class="contact-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .36 1.98.68 2.93a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.15-1.25a2 2 0 0 1 2.11-.45c.95.32 1.93.55 2.93.68A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <div>
+            <h4>Telefon</h4>
+            <p>063 277 169</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"></path><path d="M4 6l8 7 8-7"></path></svg>
+          </div>
+          <div>
+            <h4>Mejl</h4>
+            <p>info@vrticmedinkutak.rs</p>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div>
+            <h4>Adresa</h4>
+            <p>Bulevar oslobođenja 257, Voždovac, Beograd</p>
+          </div>
+        </div>
+
+        <a href="tel:063277169" class="btn btn-primary" style="margin-top:10px;">Pozovi i zakaži posetu</a>
+      </div>
+
+      <div class="map-wrap reveal">
+        <img src="assets/mapa1.png" alt="Mapa lokacije vrtića Medin Kutak na Voždovcu u Beogradu">
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="wrap">
+      <div class="final-cta reveal">
+        <h2>Spremna da upišeš dete kod nas</h2>
+        <p>Upis je u toku, uz subvencije po odluci Grada Beograda. Javi se danas i zakaži besplatnu posetu pre nego što odlučiš.</p>
+        <a href="tel:063277169" class="btn btn-primary">Zakaži posetu i upiši dete</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <a href="#top" class="logo"><img src="assets/logo.png" alt="Medin Kutak - logo vrtića i jasli"></a>
+      <div class="footer-links">
+        <a href="#program">Program</a>
+        <a href="#grupe">Grupe</a>
+        <a href="#o-nama">O nama</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+    <p class="footer-note">Medin Kutak - Montesori vrtić i jasle, Bulevar oslobođenja 257, Voždovac, Beograd</p>
+  </div>
+</footer>
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburgerBtn.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  }
+</script>
+
+</body>
+</html>
